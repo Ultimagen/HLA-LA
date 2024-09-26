@@ -1,0 +1,27 @@
+name: Build HLA-LA Docker image
+run-name: "Build HLA-LA from ${{ github.ref_name }}"
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write # Required for assuming an AWS role
+  contents: read # Required for actions/checkout
+
+env:
+  AWS_REGION: us-east-1
+  AWS_ROLE: arn:aws:iam::337532070941:role/github-actions-ecr
+  GCP_WORKLOAD_IDENTITY_PROVIDER: projects/55428976747/locations/global/workloadIdentityPools/devops-pool/providers/devops-pool-provider
+  GCP_SERVICE_ACCOUNT: gcr-push-sa@ultima-data-307918.iam.gserviceaccount.com
+  GAR_REPO_INTERNAL: us-central1-docker.pkg.dev/ultima-data-307918/ultimagen
+  GAR_REPO_SHARED: us-central1-docker.pkg.dev/ganymede-331016/ultimagen
+  DOCKERHUB_ACCOUNT: ultimagenomics
+  IMAGE: hla-la
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
