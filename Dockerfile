@@ -1,5 +1,5 @@
 # work from latest LTS ubuntu release
-FROM ubuntu:22.04
+FROM ubuntu:18.04
 
 # set the environment variables
 ENV hla_la_version 1.0.1
@@ -66,18 +66,20 @@ RUN make
 RUN make install
 
 # install hla*la
-WORKDIR /usr/local/bin
+# WORKDIR /usr/local/bin
 RUN mkdir -p /usr/local/bin/HLA-LA/bin
 RUN mkdir -p /usr/local/bin/HLA-LA/src
 RUN mkdir -p /usr/local/bin/HLA-LA/obj
 RUN mkdir -p /usr/local/bin/HLA-LA/temp
 RUN mkdir -p /usr/local/bin/HLA-LA/working
 RUN mkdir -p /usr/local/bin/HLA-LA/graphs
-WORKDIR /usr/local/bin/
-RUN wget https://github.com/DiltheyLab/HLA-LA/archive/v${hla_la_version}.zip
-RUN unzip v${hla_la_version}.zip
-RUN mv /usr/local/bin/HLA-LA-${hla_la_version}/* /usr/local/bin/HLA-LA/src/
-RUN rm -rf /usr/local/bin/HLA-LA-${hla_la_version}
+# WORKDIR /usr/local/bin/
+# RUN wget https://github.com/DiltheyLab/HLA-LA/archive/v${hla_la_version}.zip
+# RUN unzip v${hla_la_version}.zip
+# RUN mv /usr/local/bin/HLA-LA-${hla_la_version}/* /usr/local/bin/HLA-LA/src/
+# RUN rm -rf /usr/local/bin/HLA-LA-${hla_la_version}
+
+COPY ./ /usr/local/bin/HLA-LA/src/
 WORKDIR /usr/local/bin/HLA-LA/src
 RUN sed -i 's@\$(BAMTOOLS_PATH)/lib64@\$(BAMTOOLS_PATH)/lib@' makefile
 RUN make all BOOST_PATH=/usr/include/boost BAMTOOLS_PATH=/usr/local/bin/bamtools-2.5.1
