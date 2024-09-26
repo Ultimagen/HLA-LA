@@ -40,7 +40,7 @@ jobs:
         id: set-tag
         if: ${{ inputs.image-tag == '' }}
         run: |
-          if [ ${{ github.ref_name }} == 'master' ]; then
+          if [ ${{ github.ref_name }} == 'ug-master' ]; then
             echo "imageTag=master_${{ steps.short-sha.outputs.sha }}" >>$GITHUB_OUTPUT;
           else
             echo "imageTag=test_${{ steps.short-sha.outputs.sha }}" >>$GITHUB_OUTPUT;
