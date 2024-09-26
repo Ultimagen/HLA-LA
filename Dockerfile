@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 
 # set the environment variables
-ENV hla_la_version 1.0.1
+ENV hla_la_version 1.0.4
 ENV samtools_version 1.9
 ENV bwa_version 0.7.17
 ENV picard_version 1.123
