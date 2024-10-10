@@ -123,7 +123,7 @@ void BWAmapper::mapUnpaired(std::string indexedReferenceGenome, std::string FAST
 
 void BWAmapper::mapLong(std::string indexedReferenceGenome, std::string FASTQ, std::string outputBAM, bool withA, std::string longMode)
 {
-	assert((longMode == "pacbio") || (longMode == "ont2d"));
+	assert((longMode == "pacbio") || (longMode == "ont2d") || (longMode == "ultimagen"));
 
 	assert(Utilities::fileExists(bwa_bin));
 	assert(Utilities::fileExists(samtools_bin));
