@@ -1,12 +1,19 @@
-name: build
+name: Trivy scan
 on:
   push:
     branches:
       - master
   pull_request:
 jobs:
-  trivy-scan-dockers:
+  trivy-scan-fs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       
+      - uses: aquasecurity/trivy-action@0.32.0
+        with:
+          scan-type: 'fs'
+          scan-ref: './'
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
