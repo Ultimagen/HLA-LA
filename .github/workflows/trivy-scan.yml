@@ -1,0 +1,12 @@
+name: build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  trivy-scan-dockers:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      
