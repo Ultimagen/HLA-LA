@@ -1,0 +1,14 @@
+name: Build HLA-LA Docker image
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write # Required for assuming an AWS role
+  contents: read # Required for actions/checkout
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
