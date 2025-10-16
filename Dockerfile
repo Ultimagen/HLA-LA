@@ -68,7 +68,7 @@ RUN mkdir -p /usr/local/bin/HLA-LA/bin \
     /usr/local/bin/HLA-LA/obj \
     /usr/local/bin/HLA-LA/temp \
     /usr/local/bin/HLA-LA/working \
-    /usr/local/bin/HLA-LA/graphs \
+    /usr/local/bin/HLA-LA/graphs
 COPY . /usr/local/bin/HLA-LA/src/
 RUN sed -i 's@\$(BAMTOOLS_PATH)/lib64@\$(BAMTOOLS_PATH)/lib@' /usr/local/bin/HLA-LA/src/makefile \
  && make -C /usr/local/bin/HLA-LA/src all BOOST_PATH=/usr/include/boost BAMTOOLS_PATH=/usr/local/bin/bamtools-${bamtools_version}
