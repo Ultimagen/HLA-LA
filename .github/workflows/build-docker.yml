@@ -19,6 +19,6 @@ jobs:
     with:
       git-repo: ${{ github.repository }}
       git-ref: ${{ github.ref_name }}
-      docker-image: ugbio_hla_la
+      docker-image: hla_la
       docker-tag: ${{ inputs.image-tag }}
       base-branch: ug-master
